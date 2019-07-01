@@ -1,31 +1,26 @@
 pragma solidity >=0.4.0 <0.7.0;
 // pragma experimental ABIEncoderV2;
-import "./Ownable.sol";
+// import "./Ownable.sol";
 
-contract Data is Ownable {
-
+contract Data {
     
     event newAnswerAdded(string _url, string _newAnswerBody, string _newAnswerAuthor,
     string _newAnswerEditor, uint _newAnswerCreationDate, uint _newAnswerLastModified,
     uint _newAnswerLastActivity);
 
-    event newQuestionAdded(string _url, string _body, string _title, string _author, string _editor,
-    uint viewCount, uint _creationDate, uint _lastModified, uint _lastActivity);
+    event newDetailQuestionAdded(string _url, string _body, string _title, string _author, string _editor,
+    uint viewCount);
 
-    event isUpdated(string _url, bool _done);
+    event newTimeQuestionAdded( uint _creationDate, uint _lastModified, uint _lastActivity);
 
     //variables
     StackOverflowInfo[] info;
     Answer[] answers;
     mapping (string => Answer) getAnswers;
-    mapping (string => CodeSnippet) public getCodeSnippet;
+    // mapping (string => CodeSnippet) public getCodeSnippet;
     mapping (string => StackOverflowInfo) public getInfo;
     // mapping (string => address) public addressQuestioner;
-    // address[] private person;
-
-    // function user() {
-    //     owner = msg.sender;
-    // }
+    address private _owner;
 
     struct StackOverflowInfo {
         string url;
@@ -39,15 +34,15 @@ contract Data is Ownable {
         uint questionLastActivity;
     }
 
-    struct CodeSnippet {
-        string url;
-        uint date;
-        string language;
-        string projectName;
-        string companyName;
-        string projectPath;
-        string projectAuthor;
-    }
+    // struct CodeSnippet {
+    //     string url;
+    //     uint date;
+    //     string language;
+    //     string projectName;
+    //     string companyName;
+    //     string projectPath;
+    //     string projectAuthor;
+    // }
 
     struct Answer {
         string url;
@@ -60,6 +55,10 @@ contract Data is Ownable {
         uint answerLastActivity;
     }
 
+    // constructor() internal {
+    //     _owner = msg.sender;
+    // }
+
     // create a new question
     function createNewQuestion(string memory _url, string memory _body, string memory _title,
     string memory _author, string memory _editor, uint _viewCount, uint _creationDate,
@@ -67,14 +66,24 @@ contract Data is Ownable {
 
         // addressQuestioner[_url] = msg.sender;
         
-        StackOverflowInfo memory newInfo = StackOverflowInfo(_url, _body, _title, _author, _editor,
-        _viewCount, _creationDate, _lastModified, _lastActivity);
-        
-        info.push(newInfo);
+        getInfo[_url].url = _url;
+        getInfo[_url].questionBody = _body;
+        getInfo[_url].questionTitle = _title;
+        getInfo[_url].questionAuthor = _author;
+        getInfo[_url].questionEditor = _editor;
+        getInfo[_url].viewCount = _viewCount;
+        getInfo[_url].questionCreationDate = _creationDate;
+        getInfo[_url].questionLastModified = _lastModified;
+        getInfo[_url].questionLastActivity = _lastActivity;
 
-        emit newQuestionAdded(newInfo.url, newInfo.questionBody, newInfo.questionTitle,
-        newInfo.questionAuthor, newInfo.questionEditor, newInfo.viewCount,
-        newInfo.questionCreationDate, newInfo.questionLastModified, newInfo.questionLastActivity);
+        info.push(getInfo[_url]);
+
+        emit newDetailQuestionAdded(getInfo[_url].url, getInfo[_url].questionBody,
+        getInfo[_url].questionTitle, getInfo[_url].questionAuthor,
+        getInfo[_url].questionEditor, getInfo[_url].viewCount);
+
+        emit newTimeQuestionAdded(getInfo[_url].questionCreationDate,
+        getInfo[_url].questionLastModified,getInfo[_url].questionLastActivity);
     }
 
     // function codeRelated() private {
@@ -87,66 +96,90 @@ contract Data is Ownable {
     // TO Do set to private
     function updateNewAnswer(string memory _url, string memory _newAnswerBody,
     string memory _newAnswerAuthor, string memory _newAnswerEditor, uint _newAnswerCreationDate,
-    uint _newAnswerLastModified, uint  _newAnswerLastActivity) public onlyOwner {
+    uint _newAnswerLastModified, uint  _newAnswerLastActivity) public {
 
-        Answer memory answer = getAnswers[_url];
-        if(answer.isValue){
-            answer.url = _url;
-            answer.answerBody = _newAnswerBody;
-            answer.answerAuthor = _newAnswerAuthor;
-            answer.answerEditor = _newAnswerEditor;
-            answer.isValue = true;
-            answer.answerCreationDate = _newAnswerCreationDate;
-            answer.answerLastModified = _newAnswerLastModified;
-            answer.answerLastActivity = _newAnswerLastActivity;
+        if(getAnswers[_url].isValue){
+            getAnswers[_url].url = _url;
+            getAnswers[_url].answerBody = _newAnswerBody;
+            getAnswers[_url].answerAuthor = _newAnswerAuthor;
+            getAnswers[_url].answerEditor = _newAnswerEditor;
+            getAnswers[_url].answerCreationDate = _newAnswerCreationDate;
+            getAnswers[_url].answerLastModified = _newAnswerLastModified;
+            getAnswers[_url].answerLastActivity = _newAnswerLastActivity;
         }
-        else{
-            answer = Answer(_url,
-                            _newAnswerBody,
-                            _newAnswerAuthor,
-                            _newAnswerEditor,
-                            true,
-                            _newAnswerCreationDate,
-                            _newAnswerLastModified,
-                            _newAnswerLastActivity);
-            answers.push(answer);
-        }
+        else {
+            getAnswers[_url].url = _url;
+            getAnswers[_url].answerBody = _newAnswerBody;
+            getAnswers[_url].answerAuthor = _newAnswerAuthor;
+            getAnswers[_url].answerEditor = _newAnswerEditor;
+            getAnswers[_url].isValue = true;
+            getAnswers[_url].answerCreationDate = _newAnswerCreationDate;
+            getAnswers[_url].answerLastModified = _newAnswerLastModified;
+            getAnswers[_url].answerLastActivity = _newAnswerLastActivity;
 
-        // emit newAnswerAdded(answer.url, answer.answerBody, answer.answerAuthor,
-        // answer.answerEditor, answer.answerCreationDate, answer.answerLastModified,
-        // answer.answerLastActivity);
+            Answer memory newAnswer = Answer(getAnswers[_url].url,
+                                             getAnswers[_url].answerBody,
+                                             getAnswers[_url].answerAuthor,
+                                             getAnswers[_url].answerEditor,
+                                             getAnswers[_url].isValue,
+                                             getAnswers[_url].answerCreationDate,
+                                             getAnswers[_url].answerLastModified,
+                                             getAnswers[_url].answerLastActivity);
+            answers.push(newAnswer);
+        }
+       
+
+        emit newAnswerAdded(getAnswers[_url].url, getAnswers[_url].answerBody,
+        getAnswers[_url].answerAuthor, getAnswers[_url].answerEditor,
+        getAnswers[_url].answerCreationDate, getAnswers[_url].answerLastModified,
+        getAnswers[_url].answerLastActivity);
+
+        // emit isUpdated(answer.url,true);
     }
 
-    function getDetailAnswer(uint index) public view returns (string memory, string memory, string memory,
+    function getDetailAnswer(string memory url) public view returns (string memory, string memory, string memory,
     string memory, bool) {
         
-        return (answers[index].url,
-                answers[index].answerBody,
-                answers[index].answerAuthor,
-                answers[index].answerEditor,
-                answers[index].isValue);
+        return (getAnswers[url].url,
+                getAnswers[url].answerBody,
+                getAnswers[url].answerAuthor,
+                getAnswers[url].answerEditor,
+                getAnswers[url].isValue);
     }
 
-    function getTimeAnswer(uint index) public view returns (uint, uint, uint) {
-        return (answers[index].answerCreationDate,
-               answers[index].answerLastModified,
-               answers[index].answerLastActivity);
+    function getTimeAnswer(string memory url) public view returns (uint, uint, uint) {
+        return (getAnswers[url].answerCreationDate,
+                getAnswers[url].answerLastModified,
+                getAnswers[url].answerLastActivity);
     }
 
-    function getDetailQuestion(uint index) public view returns (string memory, string memory, string memory,
+    function getDetailQuestion(string memory url) public view returns (string memory, string memory, string memory,
     string memory, string memory, uint) {
-        return (info[index].url,
-                info[index].questionBody,
-                info[index].questionTitle,
-                info[index].questionAuthor,
-                info[index].questionEditor,
-                info[index].viewCount);
+        return (getInfo[url].url,
+                getInfo[url].questionBody,
+                getInfo[url].questionTitle,
+                getInfo[url].questionAuthor,
+                getInfo[url].questionEditor,
+                getInfo[url].viewCount);
     }
 
-    function getTimeQuestion(uint index) public view returns (uint, uint, uint) {
-        return (info[index].questionCreationDate,
-                info[index].questionLastModified,
-                info[index].questionLastActivity);
+    function getTimeQuestion(string memory url) public view returns (uint, uint, uint) {
+        return (getInfo[url].questionCreationDate,
+                getInfo[url].questionLastModified,
+                getInfo[url].questionLastActivity);
     }
+
+    // function owner() public view returns(address) {
+    //     return _owner;
+    // }
+
+    // function isOwner() public view returns(bool) {
+    //     return msg.sender == _owner;
+    // }
+
+    // modifier onlyOwner() {
+    //     require(isOwner());
+    //     _;
+    // }
 
 }

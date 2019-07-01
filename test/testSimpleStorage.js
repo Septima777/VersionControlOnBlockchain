@@ -11,12 +11,17 @@ const Data = artifacts.require('Data');
         
         it("Create new question", async() => {  
             await contractInstance.createNewQuestion("www.question.com","new question", "title",
-            "sept", "", 0, 1111, 0, 3333);          
+            "sept", "", 0, 1111, 0, 3333); 
+            
+            await contractInstance.createNewQuestion("www.question2.com","new question2", "title2",
+            "sept2", "", 0, 1112, 0, 3332);
 
-            getDetailQuestion = await contractInstance.getDetailQuestion(0);
-            getTimeQuestion = await contractInstance.getTimeQuestion(0);
-            // console.log(getDetailQuestion);
-            // console.log(getTimeQuestion);
+            getDetailQuestion = await contractInstance.getDetailQuestion("www.question.com");
+            // getDetailQuestion2 = await contractInstance.getDetailQuestion("www.question2.com");
+            getTimeQuestion = await contractInstance.getTimeQuestion("www.question.com");
+            console.log(getDetailQuestion);
+            // console.log(getDetailQuestion2);
+            console.log(getTimeQuestion);
 
             assert.equal("www.question.com",getDetailQuestion['0']);
             assert.equal("new question",getDetailQuestion['1']);
@@ -36,11 +41,10 @@ const Data = artifacts.require('Data');
             await contractInstance.updateNewAnswer("www.question.com","new answer","kulchol",
             "kul",4444,5555,6666);
 
-            getDetailAnswer = await contractInstance.getDetailAnswer(0);
-            getTimeAnswer = await contractInstance.getTimeAnswer(0);
+            getDetailAnswer = await contractInstance.getDetailAnswer("www.question.com");
+            getTimeAnswer = await contractInstance.getTimeAnswer("www.question.com");
             console.log(getDetailAnswer);
             console.log(getTimeAnswer);
-            console.log(getTimeAnswer['0'])
 
             assert.equal("www.question.com",getDetailAnswer['0']);
             assert.equal("new answer",getDetailAnswer['1']);
@@ -52,8 +56,6 @@ const Data = artifacts.require('Data');
             assert.equal(5555,getTimeAnswer['1']);
             assert.equal(6666,getTimeAnswer['2']);
         })
-
-
 
     }); // end of contract
 

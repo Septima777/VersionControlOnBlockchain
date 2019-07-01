@@ -1,0 +1,29 @@
+{
+  "name": "answernotification",
+  "version": "1.0.0",
+  "description": "",
+  "main": "ContractABI.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "ganache-cli": "^6.4.3",
+    "jquery-csv": "^1.0.3",
+    "openzeppelin-solidity": "^2.3.0",
+    "web3": "^1.0.0-beta.55"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Septima777/VersionControlOnBlockchain.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Septima777/VersionControlOnBlockchain/issues"
+  },
+  "homepage": "https://github.com/Septima777/VersionControlOnBlockchain#readme"
+}

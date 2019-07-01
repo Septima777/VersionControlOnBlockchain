@@ -1,0 +1,242 @@
+url,title,body,viewCount,author,editor,creationDate,LastActivity,LastModified
+http://stackoverflow.com/questions/156275/what-is-the-equivalent-of-the-c-pairl-r-in-java,"What is the equivalent of the C++ Pair&lt;L,R&gt; in Java?","<p>Is there a good reason why there is no <code>Pair&lt;L,R&gt;</code> in Java? What would be the equivalent of this C++ construct? I would rather avoid reimplementing my own.</p>
+
+<p>It seems that <strong>1.6</strong> is providing something similar (<code>AbstractMap.SimpleEntry&lt;K,V&gt;</code>), but this looks quite convoluted.</p>
+",436825,user13673,Brian Tompsett - 汤莱恩,1222836521,1551704658,1551704658
+http://stackoverflow.com/questions/15629183/svg-offset-issue-in-firefox,SVG offset issue in firefox,"<p>In Firefox 12.0 or greater, <code>.offset()</code> and <code>.position()</code> are returning unexpected values when called on SVG (root) elements. </p>
+
+<p>The resulting values are the x-coord of the most left child for the 'left' component and the y-coord of the most top child for the 'top' component.</p>
+
+<pre><code>$(this.SvgObject).offset().left / $(this.SvgObject).offset().top
+</code></pre>
+
+<p>returns un expected value in firefox.</p>
+
+<p>but when i getting the parent offset it gives the correct value (i.e.): </p>
+
+<pre><code>$(this.SvgObject).parent().offset().left 
+</code></pre>
+
+<p>but it is not correct way to do it.</p>
+
+<p>Please refer to <a href=""http://bugs.jquery.com/ticket/9797"" rel=""nofollow"">this bug report</a>. They replied with:</p>
+
+<blockquote>
+  <p>""Unfortunately we're not planning on fixing bugs relating to SVG any time soon:""</p>
+</blockquote>
+
+<p>How can I solve this in SVG?</p>
+",1668,SivaRajini,Cody Gray,1364270530,1387383805,1364271386
+http://stackoverflow.com/questions/15632215/preference-items-being-automatically-re-set,Preference items being automatically re-set?,"<p>This appears like a bug to me: When you load many switch preferences in a preference fragment, they somehow re-set themselves , when you scroll the preferences. I have separately tested this with little demo code:</p>
+
+<hr>
+
+<p><code>/res/xml/prefs.xml</code> (Just a bunch of switch preferences, just enough to make preferences scroll on screen) :</p>
+
+
+
+<pre><code>&lt;PreferenceScreen xmlns:android=""http://schemas.android.com/apk/res/android"" android:key=""my_prefs""&gt;
+    &lt;PreferenceCategory android:key=""my_prefs_cat"" android:title=""Settings""&gt;
+        &lt;SwitchPreference android:key=""p1"" android:title=""p1"" android:defaultValue=""false"" /&gt;
+        &lt;SwitchPreference android:key=""p2"" android:title=""p2"" android:defaultValue=""false"" /&gt;
+        &lt;SwitchPreference android:key=""p3"" android:title=""p3"" android:defaultValue=""false"" /&gt;
+        &lt;SwitchPreference android:key=""p4"" android:title=""p4"" android:defaultValue=""false"" /&gt;
+        &lt;SwitchPreference android:key=""p5"" android:title=""p5"" android:defaultValue=""false"" /&gt;
+        &lt;SwitchPreference android:key=""p6"" android:title=""p6"" android:defaultValue=""false"" /&gt;
+        &lt;SwitchPreference android:key=""p7"" android:title=""p7"" android:defaultValue=""false"" /&gt;
+        &lt;SwitchPreference android:key=""p8"" android:title=""p8"" android:defaultValue=""false"" /&gt;
+        &lt;SwitchPreference android:key=""p9"" android:title=""p9"" android:defaultValue=""false"" /&gt;
+        &lt;SwitchPreference android:key=""p10"" android:title=""p10"" android:defaultValue=""false"" /&gt;
+    &lt;/PreferenceCategory&gt;
+&lt;/PreferenceScreen&gt;
+</code></pre>
+
+<hr>
+
+<p><code>/src/Prefs.java</code> (A simple <code>PreferenceFragment</code>) :</p>
+
+<pre><code>package com.example.preflistbug;
+
+import android.os.Bundle;
+import android.preference.PreferenceFragment;
+
+public class Prefs extends PreferenceFragment {
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        addPreferencesFromResource(R.xml.prefs);
+    }
+
+}
+</code></pre>
+
+<hr>
+
+<p><code>/res/layout/main.xml</code> (Placed <code>PreferenceFragment</code> in Activity layout) :</p>
+
+<pre><code>&lt;?xml version=""1.0"" encoding=""utf-8""?&gt;
+&lt;LinearLayout xmlns:android=""http://schemas.android.com/apk/res/android""
+    android:orientation=""vertical""
+    android:layout_width=""fill_parent""
+    android:layout_height=""fill_parent""&gt;
+
+    &lt;fragment android:name=""com.example.preflistbug.Prefs"" 
+        android:id=""@+id/frg_prefs""
+        android:layout_width=""fill_parent""
+        android:layout_height=""fill_parent""
+        /&gt;
+&lt;/LinearLayout&gt;
+</code></pre>
+
+<hr>
+
+<p><code>/src/MyActivity.java</code> (Demo Activity) :</p>
+
+<pre><code>package com.example.preflistbug;
+
+import android.app.Activity;
+import android.os.Bundle;
+
+public class MyActivity extends Activity {
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.main);
+    }
+}
+</code></pre>
+
+<hr>
+
+<p><strong>Problem:</strong> If you change the first switch preference , scroll down, scroll back up, the switch is reset. Same is true for other switch preferences which scroll out of view and are visited later. (specially, in horizontal orientation)</p>
+
+<p>Happens on emulator too. I'm compiling on platform version 15, ICS. As you can see in above code, this is a very simple setup, I can't find anything in this code, that might explain why this is happening. </p>
+
+<h3>Update</h3>
+
+<p>Bug reported as <a href=""http://code.google.com/p/android/issues/detail?id=26194"" rel=""noreferrer"">Issue 26194</a>.</p>
+
+<h3>Update 2</h3>
+
+<p>It is supposed to be fixed in android L release. </p>
+",2254,S.D.,S.D.,1364285428,1460587057,1433082849
+http://stackoverflow.com/questions/15632215/preference-items-being-automatically-re-set/15744076#15744076,Preference items being automatically re-set?,"<p>This appears like a bug to me: When you load many switch preferences in a preference fragment, they somehow re-set themselves , when you scroll the preferences. I have separately tested this with little demo code:</p>
+
+<hr>
+
+<p><code>/res/xml/prefs.xml</code> (Just a bunch of switch preferences, just enough to make preferences scroll on screen) :</p>
+
+
+
+<pre><code>&lt;PreferenceScreen xmlns:android=""http://schemas.android.com/apk/res/android"" android:key=""my_prefs""&gt;
+    &lt;PreferenceCategory android:key=""my_prefs_cat"" android:title=""Settings""&gt;
+        &lt;SwitchPreference android:key=""p1"" android:title=""p1"" android:defaultValue=""false"" /&gt;
+        &lt;SwitchPreference android:key=""p2"" android:title=""p2"" android:defaultValue=""false"" /&gt;
+        &lt;SwitchPreference android:key=""p3"" android:title=""p3"" android:defaultValue=""false"" /&gt;
+        &lt;SwitchPreference android:key=""p4"" android:title=""p4"" android:defaultValue=""false"" /&gt;
+        &lt;SwitchPreference android:key=""p5"" android:title=""p5"" android:defaultValue=""false"" /&gt;
+        &lt;SwitchPreference android:key=""p6"" android:title=""p6"" android:defaultValue=""false"" /&gt;
+        &lt;SwitchPreference android:key=""p7"" android:title=""p7"" android:defaultValue=""false"" /&gt;
+        &lt;SwitchPreference android:key=""p8"" android:title=""p8"" android:defaultValue=""false"" /&gt;
+        &lt;SwitchPreference android:key=""p9"" android:title=""p9"" android:defaultValue=""false"" /&gt;
+        &lt;SwitchPreference android:key=""p10"" android:title=""p10"" android:defaultValue=""false"" /&gt;
+    &lt;/PreferenceCategory&gt;
+&lt;/PreferenceScreen&gt;
+</code></pre>
+
+<hr>
+
+<p><code>/src/Prefs.java</code> (A simple <code>PreferenceFragment</code>) :</p>
+
+<pre><code>package com.example.preflistbug;
+
+import android.os.Bundle;
+import android.preference.PreferenceFragment;
+
+public class Prefs extends PreferenceFragment {
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        addPreferencesFromResource(R.xml.prefs);
+    }
+
+}
+</code></pre>
+
+<hr>
+
+<p><code>/res/layout/main.xml</code> (Placed <code>PreferenceFragment</code> in Activity layout) :</p>
+
+<pre><code>&lt;?xml version=""1.0"" encoding=""utf-8""?&gt;
+&lt;LinearLayout xmlns:android=""http://schemas.android.com/apk/res/android""
+    android:orientation=""vertical""
+    android:layout_width=""fill_parent""
+    android:layout_height=""fill_parent""&gt;
+
+    &lt;fragment android:name=""com.example.preflistbug.Prefs"" 
+        android:id=""@+id/frg_prefs""
+        android:layout_width=""fill_parent""
+        android:layout_height=""fill_parent""
+        /&gt;
+&lt;/LinearLayout&gt;
+</code></pre>
+
+<hr>
+
+<p><code>/src/MyActivity.java</code> (Demo Activity) :</p>
+
+<pre><code>package com.example.preflistbug;
+
+import android.app.Activity;
+import android.os.Bundle;
+
+public class MyActivity extends Activity {
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.main);
+    }
+}
+</code></pre>
+
+<hr>
+
+<p><strong>Problem:</strong> If you change the first switch preference , scroll down, scroll back up, the switch is reset. Same is true for other switch preferences which scroll out of view and are visited later. (specially, in horizontal orientation)</p>
+
+<p>Happens on emulator too. I'm compiling on platform version 15, ICS. As you can see in above code, this is a very simple setup, I can't find anything in this code, that might explain why this is happening. </p>
+
+<h3>Update</h3>
+
+<p>Bug reported as <a href=""http://code.google.com/p/android/issues/detail?id=26194"" rel=""noreferrer"">Issue 26194</a>.</p>
+
+<h3>Update 2</h3>
+
+<p>It is supposed to be fixed in android L release. </p>
+",2254,S.D.,S.D.,1364285428,1460587057,1433082849
+http://stackoverflow.com/questions/15634291/remove-name-space-from-xml-file-and-save-as-new-xml,remove Name-Space from xml file and save as new XML,"<p>this is my link to getting XML File:-<a href=""http://services.gisgraphy.com/geoloc/search?lat=13o6&amp;lng=80o12&amp;radius=7000"" rel=""nofollow"">XML LINK</a></p>
+
+<p>this is my code:-</p>
+
+<pre><code>&lt;?php
+function convertNodeValueChars($node) {
+    if ($node-&gt;hasChildNodes()) {
+      foreach ($node-&gt;childNodes as $childNode) {
+        if ($childNode-&gt;nodeType == XML_TEXT_NODE) {
+          $childNode-&gt;nodeValue = iconv('utf-8', 'ascii//TRANSLIT', $childNode-&gt;nodeValue);
+        }
+        convertNodeValueChars($childNode);         
+      }
+    }      
+  } 
+
+  $doc = new DOMDocument();
+  $doc-&gt;load('http://services.gisgraphy.com/geoloc/search?lat=13o6&amp;lng=80o12&amp;radius=7000');
+  convertNodeValueChars($doc-&gt;documentElement);
+  $doc-&gt;save('general.xml');  
+?&gt;
+</code></pre>
+
+<p>1) i am try to remove ASCII Char to Normal Char<br>
+2) want to Remove Name-Space of XML File this is contains name-space<code>&lt;results xmlns=""http://gisgraphy.com""&gt;</code> <br>
+3) want to save as another XML file</p>
+",354,Stack Lanza,,1364292474,1364296627,0
