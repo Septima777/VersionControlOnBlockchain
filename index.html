@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8">
@@ -6,10 +6,13 @@
     <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script language="javascript" type="text/javascript" src="web3.min.js"></script>
     <!-- <script src="node_modules/web3/dist/web3.min.js"></script> -->
-    <script src="node_modules/jquery-csv/src/jquery.csv.js"></script>
+    <!-- <script> var csv = require('node_modules/jquery-csv/src/jquery.csv.js') </script> -->
+    <script src="./node_modules/jquery-csv/src/jquery.csv.js"></script>
+    <!-- <script></script> -->
     <script language="javascript" type="text/javascript" src="ContractABI.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
     <script>
+        // import jquery-csv from 'jquery.csv.js';
         const Web3 = require('web3');
         $(document).ready(function(){
             // $.ajax({
@@ -65,9 +68,56 @@
             //             "questionLastActivity : " + questionLastActivity[x] + "\n" +
             //             "questionLastModified : " + questionLastModified[x] + "\n");
             // }
-            var csv = require('./jquery.csv.js');
-            var result = $.csv.toObjects(output_test.csv);
-            console.log(result);
+            // var csv = require('./jquery.csv.js');
+                //---------------------------------------------------------------------------------
+            // function openCSVFile(CSVfileName){
+            //     // create the object
+            //     var httpRequest = new XMLHttpRequest();
+            //     // httpRequest.onreadystatechange = function() {
+            //         processCSVContents(httpRequest);
+            //     // }
+            //     // Send the request
+            //     // httpRequest.open("POST", CSVfileName, true);
+            //     // httpRequest.send(null);
+            // }
+
+            // function processCSVContents(httpRequest){               
+               
+            //     // Analys the contents using the stats library
+            //     // and display the results
+            //     // Console.log("6666");
+            //     CSVContents = httpRequest.responseText;
+            //     console.log($.csv.toObjects(CSVContents));
+                
+            //     // console.log(" => Response status: " + httpRequest.status)
+                    
+            // }
+            // openCSVFile('output_test.csv');
+            
+                //---------------------------------------------------------------------------------
+
+            // $.ajax({
+            //     type: "GET",
+            //     url: "./output_test.csv",
+            //     dataType: "text",
+            //     success: function(data) {processData(data);}
+            // });
+            // function processData(link) {
+            //     "use strict";
+            //     var input = $.csv.toObjects(link);
+            //     console.log(input);
+            //     // $("#test").append(input);
+            // }
+
+                //---------------------------------------------------------------------------------
+            // var result = $.csv.toObjects(output_test.csv);
+            // console.log(result);
+            var csv = require("csvtojson");
+                csv().fromFile('output_test.csv').on("json",function(jsonArrayObj){ 
+                    console.log(jsonArrayObj); 
+            })
+
+
         });
     </script>
   </head>
@@ -89,11 +139,11 @@
         // return cryptoZombies.methods.zombies(id).call()
         // }
 
-        // function createNewQuestion(url, body, title, author, editor, viewcount ,
-        // creationDate, lastModified, lastActivity){
-        //     return myContract.methods.createNewQuestion(url, body, title, author, editor, viewcount ,
-        //             creationDate, lastModified, lastActivity).call()
-        // }
+        function createNewQuestion(url, body, title, author, editor, viewcount ,
+        creationDate, lastModified, lastActivity){
+            return myContract.methods.createNewQuestion(url, body, title, author, editor, viewcount ,
+                    creationDate, lastModified, lastActivity).send()
+        }
 
         // function getDetailQuestion(url){
         //     return myContract.methods.getDetailQuestion(url).call()
@@ -140,4 +190,4 @@
         })
     </script>
   </body>
-</html>
+</html> -->

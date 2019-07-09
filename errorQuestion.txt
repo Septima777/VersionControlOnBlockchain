@@ -1,0 +1,50 @@
+http://stackoverflow.com/questions/12942548/making-stdvector-allocate-aligned-memory --- Making std::vector allocate aligned memory
+http://stackoverflow.com/questions/13847755/css-media-queries-for-screen-sizes --- CSS media queries for screen sizes
+http://stackoverflow.com/questions/1440957/ --- HttpURLConnection.getResponseCode() returns -1 on second invocation
+http://stackoverflow.com/questions/1547599/differences-between-smack-tinder- --- differences between smack, tinder and whack
+http://stackoverflow.com/questions/1560788/how-to-check-internet-access-on-android-inetaddress-never-times-out?page=2&tab=votes#tab-top --- How to check internet access on Android? InetAddress never times out
+http://stackoverflow.com/questions/15692275/how-to-kill-a-process-tree-programmatically-on-linux-using-c --- How to kill a process tree programmatically on Linux using C
+http://stackoverflow.com/questions/15778774/using-ffmpeg-to-losslessly-convert-yuv-to-another-format-for-editing-in-adobe-pr --- Using FFMPEG to losslessly convert YUV to another format for editing in Adobe Premier
+http://stackoverflow.com/questions/16312872/cannot-distinguish-directory-from-file-with-stat --- cannot distinguish directory from file with stat()
+http://stackoverflow.com/questions/20658809/dynamic-loading-and-weak-symbol-resolution --- Dynamic loading and weak symbol resolution
+http://stackoverflow.com/questions/222309/calculate-last-day-of-month-in-javascript --- Calculate last day of month in JavaScript
+http://stackoverflow.com/questions/22467544/java-awt-graphicsenvironment-getmaximumwindowbounds-does-not-change-after-scre --- java.awt.GraphicsEnvironment.getMaximumWindowBounds() does not change after screen mode changes
+http://stackoverflow.com/questions/2405355/how-to-pass-a-parameter-to-a-javascript-through-a-url-and-display-it-on-a-page --- How to pass a parameter to a javascript through a url and display it on a page?
+http://stackoverflow.com/questions/257288/is-it-possible-to-write-a-c-template-to-check-for-a-functions-existence/257382#257382 --- Is it possible to write a template to check for a function&#39;s existence?
+http://stackoverflow.com/questions/26049488/how-to-get-absolute-coordinates-of-object-inside-a-g-group --- How to get absolute coordinates of object inside a &lt;g&gt; group?
+http://stackoverflow.com/questions/2637023/how-to-calculate-the-latlng-of-a-point-a-certain-distance-away-from-another --- How to calculate the latlng of a point a certain distance away from another?
+http://stackoverflow.com/questions/26451893/heads-up-notification-android-lollipop --- Heads-up Notification - Android Lollipop
+http://stackoverflow.com/questions/287871/print-in-terminal-with-colors-using-python --- How to print colored text in terminal in Python?
+http://stackoverflow.com/questions/2891790/pretty-printing-of-numpy-array --- How to pretty-print a numpy.array without scientific notation and with given precision?
+http://stackoverflow.com/questions/29994275/utm-tags-and-anchors-in-url --- UTM Tags and Anchors in URL
+http://stackoverflow.com/questions/30091572/search-deep-nested-json --- Search deep nested
+http://stackoverflow.com/questions/312443/how-do-you-split-a-list-into-evenly-sized-chunks-in-python --- How do you split a list into evenly sized chunks?
+http://stackoverflow.com/questions/3256269/jtextfields-on-top-of-active-drawing-on-jpanel-threading-problems/3256941#3256941 --- JTextFields on top of active drawing on JPanel, threading problems
+http://stackoverflow.com/questions/4064808/django-model-inheritance-create-sub-instance-of-existing-instance-downcast --- Django model inheritance: create sub-instance of existing instance (downcast)?
+http://stackoverflow.com/questions/4117555/simplest-way-to-detect-a-mobile-device --- Simplest way to detect a mobile device
+http://stackoverflow.com/questions/4130922/how-to-increment-datetime-month-in-python --- How to increment datetime by custom months in python without using library
+http://stackoverflow.com/questions/4237625/removing-invalid-xml-characters-from-a-string-in-java --- removing invalid XML characters from a string in java
+http://stackoverflow.com/questions/4400747/converting-from-unsigned-long-long-to-float-with-round-to-nearest-even --- Converting from unsigned long long to float with round to nearest even
+http://stackoverflow.com/questions/4505747/how-should-i-structure-a-python-package-that-contains-cython-code --- How should I structure a Python package that contains Cython code
+http://stackoverflow.com/questions/4550662/how-do-you-find-the-sum-of-all-the-numbers-in-an-array-in-java --- How do you find the sum of all the numbers in an array in Java?
+http://stackoverflow.com/questions/4616553/using-oauth-in-free-open-source-software --- Using OAuth in free/open source software
+http://stackoverflow.com/questions/4628333/converting-a-list-of-integers-into-range-in-python --- converting a list of integers into range in python
+http://stackoverflow.com/questions/4691070/validate-url-without-www-or-http --- validate url without www. or http://
+http://stackoverflow.com/questions/4734292/specifying-where-to-install-tests-require-dependecies-of-a-distribute-setuptoo --- Specifying where to install &#39;tests_require&#39; dependencies of a distribute/setuptools package
+http://stackoverflow.com/questions/6157497/node-js-printing-to-console-without-a-trailing-newline --- Node.js: printing to console without a trailing newline?
+http://stackoverflow.com/questions/6173182/spring-json-convert-a-typed-collection-like-listmypojo --- Spring/json: Convert a typed collection like List&lt;MyPojo&gt;
+http://stackoverflow.com/questions/6210348/too-many-open-files-error-on-lucene --- Too many open files Error on Lucene
+http://stackoverflow.com/questions/7342703/gcc-4-4-4-5-unique-ptr-not-work-for-unordered-set-unordered-map --- GCC 4.4/4.5 unique_ptr not work for unordered_set/unordered_map
+http://stackoverflow.com/questions/737385/easiest-form-validation-library-for-php --- Easiest Form validation library for PHP?
+http://stackoverflow.com/questions/7396255/c-read-call-blocking-on-serial-port-operation --- C read call blocking on serial port operation
+http://stackoverflow.com/questions/7422072/javascript-how-to-detect-number-as-a-decimal-including-1-0 --- JavaScript - How To Detect Number As A Decimal (Including 1.0)
+http://stackoverflow.com/questions/746171/best-algorithm-for-bit-reversal-from-msb-lsb-to-lsb-msb-in-c --- Efficient Algorithm for Bit Reversal (from MSB-&gt;LSB to LSB-&gt;MSB) in C
+http://stackoverflow.com/questions/7521693/converting-c-sharp-to-java-jna-getmodulefilename-from-hwnd --- (Converting c# to Java JNA) - GetModuleFileName from hwnd
+http://stackoverflow.com/questions/778085/how-to-name-a-thread-in-linux --- How to name a thread in Linux?
+http://stackoverflow.com/questions/7836204/chrome-fullscreen-api --- Chrome Fullscreen API
+http://stackoverflow.com/questions/7980741/efficient-way-to-replace-placeholders-with-variables --- Efficient way to replace placeholders with variables
+http://stackoverflow.com/questions/8472948/search-document-by-id-very-slow --- Search document by id very slow
+http://stackoverflow.com/questions/8494923/solr-block-updating-of-existing-document --- Solr, block updating of existing document
+http://stackoverflow.com/questions/8519599/python-dictionary-to-string-custom-format --- python: dictionary to string, custom format?
+http://stackoverflow.com/questions/8567114/how-to-make-an-ajax-call-without-jquery --- How to make an AJAX call without jQuery?
+http://stackoverflow.com/questions/8619706/running-curl-with-openssl-0-9-8-against-openssl-1-0-0-server-causes-handshake-er --- Running curl with OpenSSL 0.9.8 against OpenSSL 1.0.0 server causes handshake error?
