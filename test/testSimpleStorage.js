@@ -1,3 +1,4 @@
+
 // const SimpleStorage = artifacts.require('SimpleStorage');
 const Data = artifacts.require('Data');
 
@@ -36,64 +37,58 @@ const Data = artifacts.require('Data');
 
         // })
 
-        // it("Update answer", async() => {
-                
-        //     await contractInstance.updateNewAnswer("www.question.com","new answer","kulchol",
-        //     "kul",4444,5555,6666);
+        // YES!!
+        // it("create new snippet", async() => {
+        //    question = await contractInstance.createNewQuestion("www.q.com","","dataQ");
+        //    snippetQuestion = await contractInstance.createNewCodeSnippet("www.q.com","","snippetQ");
+        //    answer = await contractInstance.createNewQuestion("www.a.com","www.qq.com","data of answer");
+        //    snippetAnswer = await contractInstance.createNewCodeSnippet("www.a.com","www.qq.com","snippetA");
 
-        //     getDetailAnswer = await contractInstance.getDetailAnswer("www.question.com");
-        //     getTimeAnswer = await contractInstance.getTimeAnswer("www.question.com");
-        //     console.log(getDetailAnswer);
-        //     console.log(getTimeAnswer);
+        //    getUUIDQuestion = await contractInstance.getUUIDQuestion("www.q.com");
+        //    getUUIDSnippetQ = await contractInstance.getUUIDSnippet("www.q.com",0);
+        //    getUUIDAnswer = await contractInstance.getUUIDAnswer("www.qq.com",0);
+        //    getUUIDSnippetA = await contractInstance.getUUIDSnippet("www.qq.com",0);
 
-        //     assert.equal("www.question.com",getDetailAnswer['0']);
-        //     assert.equal("new answer",getDetailAnswer['1']);
-        //     assert.equal("kulchol",getDetailAnswer['2']);
-        //     assert.equal("kul",getDetailAnswer['3']);
-        //     assert.equal(true,getDetailAnswer['4']);
+        //    console.log(getUUIDQuestion);
+        //    console.log(getUUIDSnippetQ);
+        //    console.log(getUUIDAnswer);
+        //    console.log(getUUIDSnippetA);
+        // })
+        
+        // YES!!
+        // it("create a new question", async() => {
+        //     question = await contractInstance.createNewQuestion("www.q.com","","data");
+        //     getQuestion = await contractInstance.getDetailQuestion("www.q.com");
+        //     console.log(getQuestion);
+        //     await contractInstance.createNewCodeSnippet("www.q.com","snippet");
+        //     getQuestion2 = await contractInstance.getDetailQuestion("www.q.com");
+        //     console.log(getQuestion2);
+        // })
+        
+        // YES!!   
+        it("get answer", async() => {
+            question = await contractInstance.createNewQuestion("www.qq.com","","data of question");
+            answer = await contractInstance.createNewQuestion("www.a.com","www.qq.com","data of answer");
+            answer2 = await contractInstance.createNewQuestion("www.a2.com","www.qq.com","data of answer2");
+            // answer22 = await contractInstance.createNewQuestion("www.a2.com","www.q2.com","data of answer22");
+            // answer3 = await contractInstance.createNewQuestion("www.a.com","www.qqq.com","data of answer3");
 
-        //     assert.equal(4444,getTimeAnswer['0']);
-        //     assert.equal(5555,getTimeAnswer['1']);
-        //     assert.equal(6666,getTimeAnswer['2']);
+            getAnswer = await contractInstance.getDetailAnswer("www.qq.com");
+            // getQAndA = await contractInstance.getQAndA("www.qq.com");
+            console.log(getAnswer);
+        })
+        
+        // YES!!
+        // it("get Q and A", async() => {
+        //     question = await contractInstance.createNewQuestion("www.q.com","","data of question");
+        //     snippetQuestion = await contractInstance.createNewCodeSnippet("www.q.com","","snippetQ");
+        //     answer = await contractInstance.createNewQuestion("www.a1.com","www.q.com","data of answer");
+        //     answer2 = await contractInstance.createNewQuestion("www.a2.com","www.q.com","data of answer2");
+        //     getQAndA = await contractInstance.getQAndA("www.q.com");
+        //     console.log(getQAndA);
+        //     // console.log(getQAndA2);
         // })
 
-        it("Create new code snippet", async() => {
-            await contractInstance.createNewCodeSnippet("www.question.com","1234", "python",
-            "name", "company", "/build/path/", "sept");
-
-            await contractInstance.createNewCodeSnippet("www.question.com","5678", "java",
-            "name2", "company2", "/build/path/2", "kul");            
-            
-            // getDetailCodeSnippet = await contractInstance.getDetailCodeSnippet("www.question.com");
-            // console.log(getDetailCodeSnippet);
-
-                // assert.equal("www.question.com",getDetailCodeSnippet[0]['url']);
-                // assert.equal("1234",getDetailCodeSnippet[0]['date']);
-                // assert.equal("python",getDetailCodeSnippet[0]['language']);
-                // assert.equal("name",getDetailCodeSnippet[0]['projectName']);
-                // assert.equal("company",getDetailCodeSnippet[0]['companyName']);
-                // assert.equal("/build/path/",getDetailCodeSnippet[0]['projectPath']);
-                // assert.equal("sept",getDetailCodeSnippet[0]['projectAuthor']);
-
-                // assert.equal("www.question.com",getDetailCodeSnippet[1]['url']);
-                // assert.equal("5678",getDetailCodeSnippet[1]['date']);
-                // assert.equal("java",getDetailCodeSnippet[1]['language']);
-                // assert.equal("name2",getDetailCodeSnippet[1]['projectName']);
-                // assert.equal("company2",getDetailCodeSnippet[1]['companyName']);
-                // assert.equal("/build/path/2",getDetailCodeSnippet[1]['projectPath']);
-                // assert.equal("kul",getDetailCodeSnippet[1]['projectAuthor']);
-           
-            getIndexOfCodeSnippet = await contractInstance.getIndexOfCodeSnippet("www.question.com");
-            console.log(getIndexOfCodeSnippet);
-            getDetailCodeSnippet = await contractInstance.getDetailCodeSnippet("www.question.com",0);
-            console.log(getDetailCodeSnippet);
-
-            
-
-            
-            
-
-        })
 
     }); // end of contract
 
